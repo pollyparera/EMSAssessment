@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('talk_proposals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('talk_proposal_id')->constrained()->onDelete('cascade');
-            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('speaker_id');
+            $table->unsignedBigInteger('tag_id');
+            $table->string('title');
+            $table->text('description');
+            $table->string('pdf_path')->nullable();
             $table->timestamps();
+
+            $table->foreign('speaker_id')->references('id')->on('speakers')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 

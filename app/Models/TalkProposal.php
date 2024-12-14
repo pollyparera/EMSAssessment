@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TalkProposal extends Model
 {
+    use HasFactory;
+    
     public function revisions()
     {
         return $this->hasMany(TalkProposalRevision::class);

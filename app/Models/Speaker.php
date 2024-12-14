@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Speaker extends Model
+class Speaker extends Authenticatable
 {
     protected $fillable = [
         'name',

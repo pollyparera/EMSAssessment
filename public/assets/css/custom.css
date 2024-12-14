@@ -1,0 +1,61 @@
+.authentication {
+    background: #88270b;
+    height:100vh;
+}
+.waves-effect {
+    background: #88270b;
+    color: #fff;
+    text-decoration: none;
+}
+.waves-effect:hover {
+    background: #88270b;
+    color: #fff;
+}
+
+.sidebar { 
+    background: #88270b;
+    color: #fff;
+}
+thead {
+    background-color: #88270b;
+    color: #fff;
+}
+.btn_aprove{
+border: none;
+background-color: transparent;
+outline: none;
+
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #88270b !important;
+    border-color: #88270b !important;
+}
+
+.error{
+    color:red!important;
+}
+
+.input-group{
+    margin-top:1rem!important;
+    margin-bottom:0px!important;
+}
+
+#signin{
+    margin-top:1rem!important;
+}
+
+.theme-blush .table.theme-color thead td, .theme-blush .table.theme-color thead th{
+    background: #88270b !important;
+}
+
+.view_button{
+    background: #88270b !important;
+}
+
+.required::after {
+    content: ' *'!important; /* Add the asterisk */
+    color: red!important;    /* Make it red */
+    font-weight: bold!important; /* Make it bold */
+}

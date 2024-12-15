@@ -58,3 +58,7 @@ GET /api/talk-proposals-reviews/{proposal_id}
 
 c) API endpoint for fetching statistics about talk proposals
 GET /api/talk-proposals-statistics
+
+## Testing
+To run test case generated please run the below command:
+php artisan test

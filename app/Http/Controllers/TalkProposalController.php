@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use App\Models\User;
 use App\Models\TalkProposal;
 use App\Models\TalkProposalRevision;
 use Illuminate\Support\Facades\Crypt;
+use App\Notifications\PusherNotification;
 use DataTables;
 use Auth;
 
@@ -75,6 +77,11 @@ class TalkProposalController extends Controller
         $talk_proposal->title=$request->title;
         $talk_proposal->description=$request->description;
         $talk_proposal->pdf_path=$fileName;
+
+        //send notification using pusher
+        $user = User::first(); // Choose the target user
+        $user->notify(new PusherNotification()); // Trigger notification
+        //notification sent
 
         $talk_proposal->save();
 

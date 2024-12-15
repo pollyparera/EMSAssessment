@@ -116,5 +116,11 @@
             break;
     }
     @endif
+
+    //listen to any notification
+    window.Echo.channel('notifications')
+    .listen('.Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', (e) => {
+        console.log('Notification received:', e);
+    });
     </script>
   </html>

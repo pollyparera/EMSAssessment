@@ -3,10 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TalkProposalController;
 use App\Http\Controllers\LoginController;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\Http\Controllers\ReviewerController;
 
 Route::middleware('login_status')->group(function () {
     Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -25,4 +22,10 @@ Route::middleware(['auth:speakers'])->namespace('Speaker')->prefix('speaker')->g
     Route::post('/update-talk-proposal', [TalkProposalController::class, 'update_talk_proposal'])->name('update-talk-proposal');
 
     Route::get('/speaker-logout', [LoginController::class, 'speaker_logout'])->name('speaker-logout');
+});
+
+Route::middleware(['auth:web'])->namespace('Reviewer')->prefix('reviewer')->group(function () {
+    Route::get('/dashboard', [ReviewerController::class, 'dashboard'])->name('reviewer-dashboard');
+    Route::post('/submit-review', [ReviewerController::class, 'submit_review'])->name('submit-review');
+    Route::get('/reviewer-logout', [ReviewerController::class, 'reviewer_logout'])->name('reviewer-logout');
 });

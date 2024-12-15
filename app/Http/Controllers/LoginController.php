@@ -22,6 +22,11 @@ class LoginController extends Controller
                 return redirect()->route('talk-proposals');
             }
         }
+        else{
+            if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                return redirect()->route('reviewer-dashboard');
+            }
+        }
 
         return redirect()->back()->with('message', 'Invalid credentials')->withInput();
     }

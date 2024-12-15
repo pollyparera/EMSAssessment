@@ -26,6 +26,9 @@ class TalkProposalController extends Controller
                             ->addColumn('description', function($row){
                                 return !empty($row->description) ? substr(strip_tags($row->description),0,75)."..." : 'NA';
                             })
+                            ->addColumn('average_rating', function($row){
+                                return get_overall_rating($row->id);
+                            })
                             ->addColumn('action', function($row){
                                 $html='<a href="'.route('edit-talk-proposal', ['proposal_id' => Crypt::encryptString($row->id)]).'" class="btn btn-primary view_button">Edit</a>';
 

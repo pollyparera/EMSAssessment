@@ -32,12 +32,13 @@
                         <div class="table-responsive">
                             <table class="table table-hover c_table theme-color" id="manage_talk_proposals" style="width:100%">
                                 <thead>
-                                    <tr>                                       
+                                    <tr>
+                                        <th>Action</th>                                       
                                         <th>Tag</th>
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>PDF Uploaded</th>
-                                        <th>Action</th>
+                                        <th>Average Rating</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -58,11 +59,12 @@
         searching: false,
         ajax: "{{ route('talk-proposals') }}",
         columns: [
+            {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'tag', name: 'tag'},
             {data: 'title', name: 'title'},
             {data: 'description', name: 'description'},
             {data: 'uploaded_document', name: 'uploaded_document'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'average_rating', name: 'average_rating'}
         ]
     });   
     

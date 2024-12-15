@@ -20,6 +20,10 @@ class RedirectIfAuthenticated
             return redirect()->route('talk-proposals');
         }
 
+        if (Auth::guard('web')->check()) {
+            return redirect()->route('reviewer-dashboard');
+        }
+
         return $next($request);
     }
 }

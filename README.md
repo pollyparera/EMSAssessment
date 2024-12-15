@@ -37,8 +37,9 @@ PUSHER_APP_KEY=
 PUSHER_APP_SECRET=
 
 ## Important points to consider:
-1. I was able to partial implement pusher in backend. However, it was not complete in frontend.
-2. Due to time restriction and as I have not worked much on testing I was able to complete one Unit Test fully. Please consider the same 
+1. For the API JWT authentication has been left out since there was no clarity which login user would user the API 
+2. I was able to partial implement pusher in backend. However, it was not complete in frontend.
+3. Due to time restriction and as I have not worked much on testing I was able to complete one Unit Test fully. Please consider the same 
 
 ## Process
 1. Have created the login feature for both Speakers and Reviewers

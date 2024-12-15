@@ -36,7 +36,7 @@ class ReviewerController extends Controller
                                 return get_submitted_rating($row->id,Auth::guard('web')->user()->id);
                             })
                             ->addColumn('submitted_review', function($row){
-                                $review=get_submitted_review($row->id,Auth::guard('web')->user()->id);
+                                $review=strip_tags(get_submitted_review($row->id,Auth::guard('web')->user()->id));
 
                                 return (strlen($review) > 60) ? substr($review,0,60)."..." : $review;
                             })
@@ -44,7 +44,7 @@ class ReviewerController extends Controller
                                 return get_speaker_name($row->speaker_id);
                             })
                             ->addColumn('action', function($row){
-                                $html='<a href="#" data-title="'.$row->title.'" data-proposel-id="'.Crypt::encryptString($row->id).'" class="btn btn-primary submit_rating" data-submitted-rating="'.get_submitted_rating($row->id,Auth::guard('web')->user()->id).'" data-submitted-review="'.get_submitted_review($row->id,Auth::guard('web')->user()->id).'">Submit Rating</a>';
+                                $html='<a href="#" data-title="'.$row->title.'" data-proposel-id="'.Crypt::encryptString($row->id).'" class="btn btn-primary submit_rating" data-submitted-rating="'.get_submitted_rating($row->id,Auth::guard('web')->user()->id).'" data-submitted-review="'.strip_tags(get_submitted_review($row->id,Auth::guard('web')->user()->id)).'">Submit Rating</a>';
 
                                 return $html;
                             })

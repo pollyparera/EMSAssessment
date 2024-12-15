@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\TalkProposal;
@@ -13,7 +14,7 @@ class TalkProposalTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    #[Test]
     public function a_talk_proposal_can_have_many_revisions()
     {
         $talkProposal = TalkProposal::factory()->create();
@@ -22,7 +23,7 @@ class TalkProposalTest extends TestCase
         $this->assertCount(3, $talkProposal->revisions);
     }
 
-    /** @test */
+    #[Test]
     public function a_talk_proposal_can_belong_to_many_tags()
     {
         $talkProposal = TalkProposal::factory()->create();
@@ -32,7 +33,7 @@ class TalkProposalTest extends TestCase
         $this->assertCount(2, $talkProposal->tags);
     }
 
-    /** @test */
+    #[Test]
     public function a_talk_proposal_can_have_many_reviews()
     {
         $talkProposal = TalkProposal::factory()->create();

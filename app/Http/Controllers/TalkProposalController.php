@@ -12,6 +12,12 @@ use Auth;
 
 class TalkProposalController extends Controller
 {
+    public function index(){
+        $talkProposals = TalkProposal::all();
+
+        return response()->json($talkProposals);
+    }
+
     public function talk_proposals(Request $request){
         if ($request->ajax()) {
             $talk_proposals=TalkProposal::where('speaker_id',Auth::guard('speakers')->user()->id)->orderBy('id', 'DESC');

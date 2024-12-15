@@ -13,6 +13,6 @@ class Tag extends Model
 
     public function talkProposals()
     {
-        return $this->belongsToMany(TalkProposal::class, 'talk_proposal_tag');
+        return $this->belongsToMany(TalkProposal::class, 'tag_talk_proposal');
     }
 }

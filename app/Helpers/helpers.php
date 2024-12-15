@@ -3,6 +3,7 @@
 use App\Models\Tag;
 use App\Models\Review;
 use App\Models\Speaker;
+use App\Models\User;
 
 if (!function_exists('get_tag_name')) {
     function get_tag_name($tag_id)
@@ -39,5 +40,19 @@ if (!function_exists('get_speaker_name')) {
     function get_speaker_name($speaker_id)
     {
         return Speaker::where('id',$speaker_id)->value('name');
+    }
+}
+
+if (!function_exists('get_reviewer_name')) {
+    function get_reviewer_name($reviewer_id)
+    {
+        return User::where('id',$reviewer_id)->value('name');
+    }
+}
+
+if (!function_exists('get_speaker_email')) {
+    function get_speaker_email($speaker_id)
+    {
+        return Speaker::where('id',$speaker_id)->value('email');
     }
 }

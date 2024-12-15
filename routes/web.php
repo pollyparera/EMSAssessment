@@ -10,6 +10,8 @@ Route::middleware('login_status')->group(function () {
     Route::post('/get-login', [LoginController::class, 'get_login'])->name('get-login');
 });
 
+Route::get('/talk_proposals/list', [TalkProposalController::class, 'index'])->name('talk_proposals.index');
+
 Route::middleware(['auth:speakers'])->namespace('Speaker')->prefix('speaker')->group(function () {
     Route::get('/talk-proposals', [TalkProposalController::class, 'talk_proposals'])->name('talk-proposals');
 

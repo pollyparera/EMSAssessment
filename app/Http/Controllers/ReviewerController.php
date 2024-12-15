@@ -9,6 +9,7 @@ use App\Models\Review;
 use App\Models\Tag;
 use App\Models\Speaker;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Mail;
 use DataTables;
 use Auth;
 
@@ -84,6 +85,33 @@ class ReviewerController extends Controller
             $review->rating=$request->rating;
 
             $review->save();
+
+            //send mail for review being added
+            $proposal_details=TalkProposal::where('id',Crypt::decryptString($request->proposal_id))->first();
+
+            $toEmail = get_speaker_email($proposal_details->speaker_id);
+            
+            $subject = 'Review Added';
+
+            $body='Dear '.get_speaker_name($proposal_details->speaker_id).",<br/><br/>";
+            
+            $body .='A review has been added for your proposal titled '.$proposal_details->title.". The review details includes below:<br/><br/>";
+            
+            $body .="<strong>Reviewer Name:</strong> ".Auth::guard('web')->user()->name."<br/>";
+            
+            $body .="<strong>Rating:</strong> ".$request->rating."<br/>";
+            
+            $body .="<strong>Review Submitted:</strong> ".$request->review."<br/>";
+
+            try{
+                Mail::html($body, function ($message) use ($toEmail, $subject) {
+                    $message->to($toEmail)
+                            ->subject($subject);
+                });
+            }   
+            catch(\Exception $e){
+                return false;
+            }
 
             return true;
         }

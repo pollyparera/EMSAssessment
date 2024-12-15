@@ -16,7 +16,7 @@ class TalkProposal extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'talk_proposal_tag');
+        return $this->belongsToMany(Tag::class, 'tag_talk_proposal');
     }
 
     public function reviews()
